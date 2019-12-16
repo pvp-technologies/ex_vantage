@@ -58,8 +58,4 @@ defmodule AirVantage.MockServer do
   defp success(conn, body) do
     Plug.Conn.send_resp(conn, 200, Jason.encode!(body))
   end
-
-  defp failure(conn) do
-    Plug.Conn.send_resp(conn, 422, Jason.encode!(%{message: "error message"}))
-  end
 end

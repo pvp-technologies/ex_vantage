@@ -14,7 +14,7 @@ defmodule AirVantage.MixProject do
   def application do
     [
       extra_applications: [:logger, :oauth2],
-      mod: {AirVantage.Application, [env: Mix.env()]},
+      mod: {AirVantage, [env: Mix.env()]},
       applications: applications(Mix.env())
     ]
   end
