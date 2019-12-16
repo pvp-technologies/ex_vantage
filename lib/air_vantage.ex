@@ -1,0 +1,2 @@
+defmodule AirVantage do
+end
