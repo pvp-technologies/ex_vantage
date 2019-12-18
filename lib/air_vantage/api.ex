@@ -3,11 +3,25 @@ defmodule AirVantage.API do
     OAuth2.Client.get!(
       client(),
       "/v1/systems",
-      [],
+      [{"Content-Type", "application/json"}],
       params: %{
         "fields" => fields,
         "gateway" => gateway
       }
+    ).body
+  end
+
+  def wake_up(uids) do
+    OAuth2.Client.post!(
+      client(),
+      "/v1/operations/systems/wakeup",
+      %{
+        "action" => "READYAGENT_DM_CONNECT",
+        "systems" => %{
+          "uids" => uids
+        }
+      },
+      [{"Content-Type", "application/json"}]
     ).body
   end
 
