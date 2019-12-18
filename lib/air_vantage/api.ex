@@ -5,34 +5,6 @@ defmodule AirVantage.API do
   @type headers :: [{String.t(), String.t()}] | []
   @type body :: String.t()
 
-  def find_system(fields, gateway) do
-    params = %{
-      "fields" => fields,
-      "gateway" => gateway
-    }
-
-    AirVantage.Request.new_request()
-    |> AirVantage.Request.put_endpoint("/v1/systems")
-    |> AirVantage.Request.put_params(params)
-    |> AirVantage.Request.put_method(:get)
-    |> AirVantage.Request.make_request()
-  end
-
-  def wake_up(uids) do
-    params = %{
-      "action" => "READYAGENT_DM_CONNECT",
-      "systems" => %{
-        "uids" => uids
-      }
-    }
-
-    AirVantage.Request.new_request()
-    |> AirVantage.Request.put_endpoint("/v1/operations/systems/wakeup")
-    |> AirVantage.Request.put_params(params)
-    |> AirVantage.Request.put_method(:post)
-    |> AirVantage.Request.make_request()
-  end
-
   @doc """
   A low level utility function to make a direct request to the AirVantage API.
   """
