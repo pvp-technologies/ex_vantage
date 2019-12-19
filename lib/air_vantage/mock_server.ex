@@ -61,6 +61,12 @@ defmodule AirVantage.MockServer do
     })
   end
 
+  post "/v1/operations/systems/sms" do
+    success(conn, %{
+      "operation" => "4b89657f63aac4b299c1d46e98a495326"
+    })
+  end
+
   defp success(conn, body) do
     Plug.Conn.send_resp(conn, 200, Jason.encode!(body))
   end

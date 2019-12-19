@@ -67,10 +67,13 @@ defmodule AirVantage.Request do
   Executes the request and returns the response.
   """
   @spec make_request(t) :: {:ok, struct} | {:error, AirVantage.Error.t()}
-  def make_request(
-        %Request{params: params, endpoint: endpoint, method: method, headers: headers, opts: opts} =
-          request
-      ) do
+  def make_request(%Request{
+        params: params,
+        endpoint: endpoint,
+        method: method,
+        headers: headers,
+        opts: opts
+      }) do
     API.request(method, endpoint, headers, params, opts)
   end
 end
