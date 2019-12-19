@@ -5,7 +5,7 @@ defmodule AirVantage.Operations.SystemTest do
 
   describe "find" do
     test "returns systems filtering by IMEI" do
-      response = System.find("uid,name,gateway,subscription", "imei:359377060750279")
+      {:ok, response} = System.find("uid,name,gateway,subscription", "imei:359377060750279")
 
       assert !is_nil(response["items"])
       assert response["items"] != []

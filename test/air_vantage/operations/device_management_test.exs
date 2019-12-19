@@ -5,7 +5,7 @@ defmodule AirVantage.Operations.DeviceManagementTest do
 
   describe "wake_up" do
     test "responds with success by returning an operation number" do
-      response = DeviceManagement.wake_up(["0fda23be05fc4edaa8d92c4091dd7f93"])
+      {:ok, response} = DeviceManagement.wake_up(["0fda23be05fc4edaa8d92c4091dd7f93"])
       assert !is_nil(response["operation"])
     end
   end

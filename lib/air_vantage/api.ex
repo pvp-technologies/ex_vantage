@@ -1,28 +1,31 @@
 defmodule AirVantage.API do
+  alias AirVantage.Error
   alias OAuth2.{Client, Request, Response}
 
   @type method :: :get | :post | :put | :delete
   @type headers :: [{String.t(), String.t()}] | []
   @type body :: String.t()
+  @typep http_success :: {:ok, Response.t()}
+  @typep http_failure :: {:error, OAuth2.Error.t()}
 
   @doc """
   A low level utility function to make a direct request to the AirVantage API.
   """
-  @spec request(method, String.t(), headers, body, list) :: {:ok, map}
+  @spec request(method, String.t(), headers, body, list) ::
+          {:ok, map} | {:error, Error.t()}
   def request(method, endpoint, headers, body, opts \\ []) do
     url = "#{get_base_url()}#{endpoint}"
+    response = Request.request(method, client(), url, body, headers, opts)
 
-    case Request.request(method, client(), url, body, headers, opts) do
-      {:ok, %Response{body: body}} -> body
-      {:error, %Response{body: body}} -> "Something bad happen: #{inspect(body)}"
-      {:error, %OAuth2.Error{reason: reason}} -> reason
-    end
+    handle_response(response)
   end
 
+  @spec client() :: Client.t()
   defp client do
     Client.get_token!(init_client())
   end
 
+  @spec init_client() :: Client.t()
   defp init_client do
     Client.new(
       strategy: OAuth2.Strategy.Password,
@@ -33,6 +36,31 @@ defmodule AirVantage.API do
       headers: [{"content-type", "application/x-www-form-urlencoded"}],
       serializers: %{"application/json" => Jason}
     )
+  end
+
+  @spec handle_response(http_success | http_failure) :: {:ok, map} | {:error, Error.t()}
+  defp handle_response({:ok, %Response{status_code: status, body: body}})
+       when status >= 200 and status <= 299 do
+    {:ok, body}
+  end
+
+  defp handle_response({:ok, %Response{status_code: status, body: body}})
+       when status >= 300 and status <= 599 do
+    error =
+      case body do
+        %{"error" => _, "error_description" => _} ->
+          Error.air_vantage_error(status, body)
+
+        _ ->
+          Error.air_vantage_error(status, nil)
+      end
+
+    {:error, error}
+  end
+
+  defp handle_response({:error, %OAuth2.Error{reason: reason}}) do
+    error = Error.oauth_error(reason)
+    {:error, error}
   end
 
   #

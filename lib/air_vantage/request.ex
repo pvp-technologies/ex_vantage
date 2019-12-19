@@ -1,5 +1,5 @@
 defmodule AirVantage.Request do
-  alias AirVantage.{API, Request}
+  alias AirVantage.{API, Error, Request}
 
   @type t :: %__MODULE__{
           endpoint: String.t() | nil,
@@ -66,7 +66,7 @@ defmodule AirVantage.Request do
   @doc """
   Executes the request and returns the response.
   """
-  @spec make_request(t) :: {:ok, struct} | {:error, AirVantage.Error.t()}
+  @spec make_request(t) :: {:ok, map} | {:error, Error.t()}
   def make_request(%Request{
         params: params,
         endpoint: endpoint,
