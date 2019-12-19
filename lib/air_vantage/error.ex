@@ -34,7 +34,7 @@ defmodule AirVantage.Error do
       code: :network_error,
       message:
         "An error occurred while making the network request. The HTTP client returned the following reason: #{
-          inspect(reason)
+          reason
         }"
     }
   end
@@ -56,12 +56,10 @@ defmodule AirVantage.Error do
         air_vantage_error(status, nil)
 
       error_details ->
-        message = Map.get(error_data, "errorParameters")
-
         %__MODULE__{
           source: :air_vantage,
-          code: error_details,
-          message: message
+          code: code_from_status(status),
+          message: error_details
         }
     end
   end
