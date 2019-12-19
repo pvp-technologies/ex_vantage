@@ -3,12 +3,12 @@ defmodule AirVantage.Error do
 
   @type error_status ::
           :bad_request
-          | :unauthorized
-          | :request_failed
-          | :not_found
           | :conflict
-          | :too_many_requests
+          | :not_found
+          | :request_failed
           | :server_error
+          | :too_many_requests
+          | :unauthorized
           | :unknown_error
 
   @type t :: %__MODULE__{
