@@ -6,7 +6,7 @@
 
 # ExVantage
 
-An Elixir library for working with [AirVantage API](https://doc.airvantage.net/av).
+An Elixir library to work with [AirVantage API](https://doc.airvantage.net/av).
 
 ## Installation
 
@@ -24,7 +24,7 @@ If your using `elixir <= 1.4` you might need to add it to your application:
 
 ```ex
 defp application do
-	[applications: [:ex_vantage]]
+  [applications: [:ex_vantage]]
 end
 ```
 
