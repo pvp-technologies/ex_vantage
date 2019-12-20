@@ -33,11 +33,11 @@ end
 To make API calls, it is necessary to configure your AirVantage account by adding few configurations:
 
 ```ex
-config :ex_vantage, :api_base_url, "https://eu.airvantage.net/api"
-config :ex_vantage, :client_id, "12345678a567abc70de2551d18feed"
-config :ex_vantage, :client_secret, "182n263b368f44a419149bf8db7f2a6aa"
-config :ex_vantage, :username, "your.email@exvantage.com"
-config :ex_vantage, :password, "yourSecureP@ssword!"
+config :ex_vantage, :api_base_url, "https://eu.airvantage.net/api",
+                    :client_id, "12345678a567abc70de2551d18feed",
+                    :client_secret, "182n263b368f44a419149bf8db7f2a6aa",
+                    :username, "your.email@exvantage.com",
+                    :password, "yourSecureP@ssword!"
 ```
 
 # Contributing
