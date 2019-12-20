@@ -20,7 +20,7 @@ Or using git:
 ```ex
 {:ex_vantage, git: "https://github.com/pvp-technologies/ex_vantage"}
 ```
-If your using `elixir <= 1.4` you might need to add it to your application:
+If your using `elixir < 1.4` you might need to add it to your application:
 
 ```ex
 defp application do
