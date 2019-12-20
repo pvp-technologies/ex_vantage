@@ -1,6 +1,14 @@
-defmodule AirVantage.Operations.Communication do
+defmodule AirVantage.Operations.SystemCommunication do
+  @moduledoc false
+
   import AirVantage.Request
 
+  alias AirVantage.Error
+
+  @doc """
+  Sends a text SMS to a selection of systems.
+  """
+  @spec send_sms(list, String.t()) :: {:ok, map} | {:error, Error.t()}
   def send_sms(uids, msg_content) do
     params = %{
       "systems" => %{
