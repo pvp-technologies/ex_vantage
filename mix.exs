@@ -7,7 +7,14 @@ defmodule AirVantage.MixProject do
       version: "0.0.1",
       elixir: "~> 1.9",
       start_permanent: Mix.env() == :prod,
-      deps: deps()
+      deps: deps(),
+      test_coverage: [tool: ExCoveralls],
+      preferred_cli_env: [
+        coveralls: :test,
+        "coveralls.detail": :test,
+        "coveralls.post": :test,
+        "coveralls.html": :test
+      ]
     ]
   end
 
@@ -28,7 +35,9 @@ defmodule AirVantage.MixProject do
       {:hackney, "~> 1.15"},
       {:oauth2, "~> 2.0"},
       {:plug, "~> 1.8"},
-      {:plug_cowboy, "~> 2.1"}
+      {:plug_cowboy, "~> 2.1"},
+      {:excoveralls, "~> 0.10", only: :test},
+      {:inch_ex, github: "rrrene/inch_ex", only: [:dev, :test]}
     ]
   end
 end

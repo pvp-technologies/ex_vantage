@@ -4,7 +4,7 @@ defmodule AirVantage.Request do
   @type t :: %__MODULE__{
           endpoint: String.t() | nil,
           headers: list | nil,
-          method: Stripe.API.method() | nil,
+          method: API.method() | nil,
           opts: Keyword.t() | nil,
           params: map
         }
