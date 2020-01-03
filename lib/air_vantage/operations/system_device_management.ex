@@ -16,9 +16,9 @@ defmodule AirVantage.Operations.SystemDeviceManagement do
     }
 
     new_request()
+    |> put_method(:post)
     |> put_endpoint("/v1/operations/systems/wakeup")
     |> put_params(params)
-    |> put_method(:post)
     |> make_request()
   end
 end

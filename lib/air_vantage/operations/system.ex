@@ -21,9 +21,9 @@ defmodule AirVantage.Operations.System do
     }
 
     new_request()
+    |> put_method(:get)
     |> put_endpoint("/v1/systems")
     |> put_params(params)
-    |> put_method(:get)
     |> make_request()
   end
 end

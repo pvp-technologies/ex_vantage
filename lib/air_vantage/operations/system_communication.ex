@@ -18,8 +18,8 @@ defmodule AirVantage.Operations.SystemCommunication do
     }
 
     new_request()
-    |> put_endpoint("/v1/operations/systems/sms")
     |> put_method(:post)
+    |> put_endpoint("/v1/operations/systems/sms")
     |> put_params(params)
     |> make_request()
   end
