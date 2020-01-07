@@ -20,7 +20,7 @@ defmodule AirVantage.MixProject do
 
   def application do
     [
-      extra_applications: [:logger, :oauth2],
+      extra_applications: [:logger],
       mod: {AirVantage, [env: Mix.env()]},
       applications: applications(Mix.env())
     ]
@@ -33,9 +33,9 @@ defmodule AirVantage.MixProject do
     [
       {:jason, "~> 1.1"},
       {:hackney, "~> 1.15"},
-      {:oauth2, "~> 2.0"},
       {:plug, "~> 1.8"},
       {:plug_cowboy, "~> 2.1"},
+      {:uri_query, "~> 0.1"},
       {:excoveralls, "~> 0.10", only: :test},
       {:inch_ex, github: "rrrene/inch_ex", only: [:dev, :test]}
     ]

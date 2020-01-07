@@ -3,7 +3,7 @@ defmodule AirVantage.Request do
 
   @type t :: %__MODULE__{
           endpoint: String.t() | nil,
-          headers: list | nil,
+          headers: map,
           method: API.method() | nil,
           opts: Keyword.t() | nil,
           params: map
@@ -19,7 +19,7 @@ defmodule AirVantage.Request do
   Creates a new request.
   """
   @spec new_request(list) :: t
-  def new_request(headers \\ [{"Content-Type", "application/json"}]) do
+  def new_request(headers \\ %{"Content-Type" => "application/json"}) do
     %Request{headers: headers}
   end
 
@@ -74,6 +74,6 @@ defmodule AirVantage.Request do
         headers: headers,
         opts: opts
       }) do
-    API.request(method, endpoint, headers, params, opts)
+    API.request(params, method, endpoint, headers, opts)
   end
 end
