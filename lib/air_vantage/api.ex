@@ -1,4 +1,8 @@
 defmodule AirVantage.API do
+  @moduledoc """
+  Utilities for interacting with the AirVantage API.
+  """
+
   alias AirVantage.Error
 
   @type method :: :get | :post | :put | :delete
@@ -75,13 +79,13 @@ defmodule AirVantage.API do
     base_url = get_base_url() <> "/oauth"
     req_url = base_url <> "/token"
 
-    req_body =
-      %{
-        "grant_type" => "password",
-        "username" => get_username(),
-        "password" => get_password()
-      }
-      |> encode_query()
+    req_params = %{
+      "grant_type" => "password",
+      "username" => get_username(),
+      "password" => get_password()
+    }
+
+    req_body = encode_query(req_params)
 
     req_headers =
       %{}
@@ -99,12 +103,11 @@ defmodule AirVantage.API do
     handle_response(response)
   end
 
-  @doc """
-  Takes a map and turns it into proper query values.
-  """
   @spec encode_query(map) :: String.t()
-  def encode_query(map) do
-    map |> UriQuery.params() |> URI.encode_query()
+  defp encode_query(map) do
+    map
+    |> UriQuery.params()
+    |> URI.encode_query()
   end
 
   @spec prepend_url(String.t(), String.t()) :: String.t()
