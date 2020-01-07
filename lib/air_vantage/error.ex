@@ -27,8 +27,8 @@ defmodule AirVantage.Error do
   end
 
   @doc false
-  @spec oauth_error(String.t()) :: t
-  def oauth_error(reason) do
+  @spec network_error(String.t()) :: t
+  def network_error(reason) do
     %__MODULE__{
       source: :network,
       code: :network_error,
