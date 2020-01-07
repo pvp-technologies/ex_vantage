@@ -8,10 +8,10 @@ defmodule AirVantage.Request do
   alias AirVantage.{API, Error, Request}
 
   @type t :: %__MODULE__{
-          endpoint: String.t() | nil,
-          headers: map,
+          endpoint: API.endpoint() | nil,
+          headers: API.headers() | nil,
           method: API.method() | nil,
-          opts: Keyword.t() | nil,
+          opts: Keyword.t(),
           params: map
         }
 
@@ -24,7 +24,7 @@ defmodule AirVantage.Request do
   @doc """
   Creates a new request.
   """
-  @spec new_request(list) :: t
+  @spec new_request(map | nil) :: t
   def new_request(headers \\ %{"Content-Type" => "application/json"}) do
     %Request{headers: headers}
   end

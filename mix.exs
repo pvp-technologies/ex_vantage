@@ -20,7 +20,7 @@ defmodule AirVantage.MixProject do
 
   def application do
     [
-      extra_applications: [:logger],
+      extra_applications: [:logger, :jason, :plug, :uri_query],
       mod: {AirVantage, [env: Mix.env()]},
       applications: applications(Mix.env())
     ]
