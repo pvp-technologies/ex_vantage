@@ -7,6 +7,7 @@ defmodule AirVantage.Operations.System do
   """
 
   import AirVantage.Request
+  alias AirVantage.Error
 
   @doc """
   Returns a paginated list of systems with their complete details.

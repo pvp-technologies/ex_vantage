@@ -2,6 +2,7 @@ defmodule AirVantage.Operations.SystemDeviceManagement do
   @moduledoc false
 
   import AirVantage.Request
+  alias AirVantage.Error
 
   @doc """
   Wakes up a communication application deployed on a selection of systems in order to force this application to communicate with the Operating Portal.
