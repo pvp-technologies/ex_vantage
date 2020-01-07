@@ -36,8 +36,10 @@ defmodule AirVantage.MixProject do
       {:plug, "~> 1.8"},
       {:plug_cowboy, "~> 2.1"},
       {:uri_query, "~> 0.1"},
+      {:credo, "~> 1.1", only: :dev, runtime: false},
+      {:dialyxir, "~> 1.0.0-rc.7", only: :dev, runtime: false},
       {:excoveralls, "~> 0.10", only: :test},
-      {:inch_ex, github: "rrrene/inch_ex", only: [:dev, :test]}
+      {:inch_ex, github: "rrrene/inch_ex", only: :dev, runtime: false}
     ]
   end
 end
