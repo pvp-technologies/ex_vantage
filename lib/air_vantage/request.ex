@@ -1,4 +1,10 @@
 defmodule AirVantage.Request do
+  @moduledoc """
+  A module to build and execute requests to AirVantage API.
+  The request does not happen until its passed to `make_request/1`.
+  At a minimum, a request must have the endpoint and method specified to be valid.
+  """
+
   alias AirVantage.{API, Error, Request}
 
   @type t :: %__MODULE__{
