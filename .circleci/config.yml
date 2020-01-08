@@ -57,6 +57,3 @@ jobs:
       - run: mix coveralls.circle
       - run: MIX_ENV=dev mix credo
       - run: MIX_ENV=dev mix inch.report
-
-      - store_test_results:
-          path: _build/test/lib/ex_vantage
