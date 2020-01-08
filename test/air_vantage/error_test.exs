@@ -39,10 +39,10 @@ defmodule AirVantage.ErrorTest do
     end
   end
 
-  describe "oauth_error/1" do
+  describe "network_error/1" do
     test "returns a network error with the client provided erro reason" do
       reason = "Connectivity issue"
-      error = Error.oauth_error(reason)
+      error = Error.network_error(reason)
       assert error.code == :network_error
 
       assert error.message ==
