@@ -42,8 +42,19 @@ jobs:
           key: v1-build-cache
           paths: "_build"
 
-      - run: mix coveralls.circle
+      - restore_cache:
+          keys:
+            - v1-plt-cache-{{ checksum "mix.lock" }}
+            - v1-plt-cache
+      - run: MIX_ENV=dev mix dialyzer --plt
+      - save_cache:
+          key: v1-plt-cache-{{ checksum "mix.lock" }}
+          paths:
+            - _build
+            - ~/.mix
+
       - run: MIX_ENV=dev mix dialyzer --halt-exit-status
+      - run: mix coveralls.circle
       - run: MIX_ENV=dev mix credo
 
       - store_test_results:
