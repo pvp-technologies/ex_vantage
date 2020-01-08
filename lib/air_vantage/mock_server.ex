@@ -1,4 +1,10 @@
 defmodule AirVantage.MockServer do
+  @moduledoc """
+  A Mock Server that return expected response from the AirVantage API.
+  All of those responses are based on the official AirVantage API documentation.
+  This Cowboy instance is only executed on Test environment.
+  """
+
   use Plug.Router
 
   plug(Plug.Parsers, pass: ["application/*"], parsers: [:json], json_decoder: Jason)
@@ -9,7 +15,7 @@ defmodule AirVantage.MockServer do
     success(conn, %{
       "access_token" =>
         "SuZKFt3oMd8w1M_FyhSoWz0TEpT-Xmb7Nnc3j8GdEWqvAZopbkGVDz2ZPJpoCs_Wtj2KWVfVFq96hAk3wYuH7Q",
-      "expires_in" => 64080,
+      "expires_in" => 64_080,
       "token_type" => "Bearer",
       "refresh_token" =>
         "8Wn4Pupf-xTiXSuYAYCBXhUduS3_oV21_bisZs39wbaSCdYsUdSvBM1ElmjBWpIyPkuDNyvBVTkHu_sBS9UNiQ"

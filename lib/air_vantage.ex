@@ -1,4 +1,8 @@
 defmodule AirVantage do
+  @moduledoc """
+  A simple HTTP client to communicate with AirVantage API.
+  """
+
   def start(_type, args) do
     children =
       case args do
