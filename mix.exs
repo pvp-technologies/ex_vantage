@@ -39,7 +39,8 @@ defmodule AirVantage.MixProject do
       {:credo, "~> 1.1", only: :dev, runtime: false},
       {:dialyxir, "~> 1.0.0-rc.7", only: :dev, runtime: false},
       {:excoveralls, "~> 0.10", only: :test},
-      {:inch_ex, github: "rrrene/inch_ex", only: :dev, runtime: false}
+      {:inch_ex, github: "rrrene/inch_ex", only: :dev, runtime: false},
+      {:sobelow, "~> 0.9", only: :dev, runtime: false}
     ]
   end
 end

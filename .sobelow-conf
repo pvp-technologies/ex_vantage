@@ -1,0 +1,11 @@
+[
+  verbose: false,
+  private: false,
+  skip: false,
+  exit: "low",
+  format: "txt",
+  out: "",
+  threshold: "low",
+  ignore: [],
+  ignore_files: ["lib/air_vantage/mock_server.ex"]
+]

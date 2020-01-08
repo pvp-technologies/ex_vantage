@@ -56,4 +56,5 @@ jobs:
       - run: MIX_ENV=dev mix dialyzer
       - run: mix coveralls.circle
       - run: MIX_ENV=dev mix credo
+      - run: MIX_ENV=dev mix sobelow --config
       - run: MIX_ENV=dev mix inch.report
