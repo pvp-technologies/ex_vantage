@@ -46,4 +46,4 @@ Feedback, feature requests, and fixes are welcomed and encouraged. Please make a
 
 # License
 
-Please see [LICENSE](LICENSE) for licensing details.
+Please see [LICENSE](MIT-LICENSE) for licensing details.
