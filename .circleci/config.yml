@@ -44,6 +44,7 @@ jobs:
 
       - run: mix coveralls.circle
       - run: MIX_ENV=dev mix dialyzer --halt-exit-status
+      - run: MIX_ENV=dev mix credo
 
       - store_test_results:
           path: _build/test/lib/ex_vantage
