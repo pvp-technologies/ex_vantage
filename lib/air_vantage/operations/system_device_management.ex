@@ -1,5 +1,7 @@
 defmodule AirVantage.Operations.SystemDeviceManagement do
-  @moduledoc false
+  @moduledoc """
+  Device managament related operations
+  """
 
   import AirVantage.Request
   alias AirVantage.Error

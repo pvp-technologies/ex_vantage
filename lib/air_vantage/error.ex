@@ -1,7 +1,5 @@
 defmodule AirVantage.Error do
-  @moduledoc """
-  A simple error module allowing clean error catching coming from AirVantage API
-  """
+  @moduledoc false
 
   @type error_source :: :network | :air_vantage
 

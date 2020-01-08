@@ -1,9 +1,5 @@
 defmodule AirVantage.MockServer do
-  @moduledoc """
-  A Mock Server that return expected response from the AirVantage API.
-  All of those responses are based on the official AirVantage API documentation.
-  This Cowboy instance is only executed on Test environment.
-  """
+  @moduledoc false
 
   use Plug.Router
 

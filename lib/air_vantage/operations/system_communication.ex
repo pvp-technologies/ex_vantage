@@ -1,5 +1,7 @@
 defmodule AirVantage.Operations.SystemCommunication do
-  @moduledoc false
+  @moduledoc """
+  Communication related operations.
+  """
 
   import AirVantage.Request
 

@@ -31,7 +31,6 @@ defmodule AirVantage.Request do
 
   @doc """
   Specifies an endpoint for the request.
-  The endpoint should not include the `v1` prefix or an initial slash.
   """
   @spec put_endpoint(t, String.t()) :: t
   def put_endpoint(%Request{} = request, endpoint) do
@@ -51,7 +50,7 @@ defmodule AirVantage.Request do
 
   @doc """
   Specifies the parameters to be used for the request.
-  If the request is a POST request, these are encoded in the request body.
+  If the request is a `:post` request, these are encoded in the request body.
   Otherwise, they are encoded in the URL.
   Calling this function multiple times will merge, not replace, the params
   currently specified.

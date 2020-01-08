@@ -10,10 +10,14 @@ defmodule AirVantage.API do
   @type headers :: %{String.t() => String.t()} | %{}
   @type method :: :get | :post | :put | :delete
   @type params :: map
-  @type url :: String.t()
+  @typep url :: String.t()
   @typep http_success :: {:ok, integer, [{String.t(), String.t()}], String.t()}
   @typep http_failure :: {:error, term}
 
+  @doc """
+  A low level function which performs any request to AirVantage API.
+  This function could actually be used in order to make request to unsupported endpoints.
+  """
   @spec request(params, method, endpoint, headers, list) ::
           {:ok, map} | {:error, Error.t()}
   def request(params, :get, endpoint, headers, opts) do
