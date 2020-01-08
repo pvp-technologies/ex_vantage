@@ -3,6 +3,11 @@
 		<img alt="AirVantage Logo" width="400" src="https://user-images.githubusercontent.com/112219/71285004-1e2faf80-2332-11ea-816b-ba6b87319eab.png">
 	</a>
 </p>
+<p align="center">
+	<a href="https://circleci.com/gh/pvp-technologies/ex_vantage">
+		<img alt="CircleCI" src="https://circleci.com/gh/pvp-technologies/ex_vantage.svg?style=shield">
+	</a>
+</p>
 
 # ExVantage
 
