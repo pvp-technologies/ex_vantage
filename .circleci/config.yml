@@ -53,7 +53,7 @@ jobs:
             - _build
             - ~/.mix
 
-      - run: MIX_ENV=dev mix dialyzer --halt-exit-status
+      - run: MIX_ENV=dev mix dialyzer
       - run: mix coveralls.circle
       - run: MIX_ENV=dev mix credo
 
