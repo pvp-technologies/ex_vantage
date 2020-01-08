@@ -5,8 +5,11 @@
 </p>
 <p align="center">
 	<a href="https://circleci.com/gh/pvp-technologies/ex_vantage">
-		<img alt="CircleCI" src="https://circleci.com/gh/pvp-technologies/ex_vantage.svg?style=shield">
+		<img alt="CircleCI status badge" src="https://circleci.com/gh/pvp-technologies/ex_vantage.svg?style=shield">
 	</a>
+	<a href='https://coveralls.io/github/pvp-technologies/ex_vantage?branch=master'>
+		<img alt="Coveralls status badge" src="https://coveralls.io/repos/github/pvp-technologies/ex_vantage/badge.svg?branch=master" /></a>
+
 </p>
 
 # ExVantage
