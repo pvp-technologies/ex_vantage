@@ -37,7 +37,7 @@ defmodule AirVantage.MixProject do
       {:jason, "~> 1.1"},
       {:hackney, "~> 1.15"},
       {:plug, "~> 1.8"},
-      {:plug_cowboy, "~> 2.1"},
+      {:plug_cowboy, "~> 1.0"},
       {:uri_query, "~> 0.1"},
       {:credo, "~> 1.1", only: :dev, runtime: false},
       {:dialyxir, "~> 1.0.0-rc.7", only: :dev, runtime: false},
