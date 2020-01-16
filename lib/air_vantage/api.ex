@@ -5,6 +5,8 @@ defmodule AirVantage.API do
 
   alias AirVantage.Error
 
+  @behaviour AirVantage.APIBehaviour
+
   @type body :: String.t()
   @type endpoint :: String.t()
   @type headers :: %{String.t() => String.t()} | %{}
@@ -15,7 +17,7 @@ defmodule AirVantage.API do
   @typep http_failure :: {:error, term}
 
   @doc """
-  A low level function which performs any request to AirVantage API.
+  A function which performs any request to AirVantage API.
   This function could actually be used in order to make request to unsupported endpoints.
   """
   @spec request(params, method, endpoint, headers, list) ::
@@ -37,6 +39,32 @@ defmodule AirVantage.API do
     body = Jason.encode!(params)
 
     perform_request(req_url, method, body, headers, opts)
+  end
+
+  @doc """
+  A function chich performs a request to AirVantage OAuth endpoint
+  in order to request a new valid authentication token.
+  """
+  @spec get_oauth_token() :: {:ok, map} | {:error, Error.t()}
+  def get_oauth_token() do
+    base_url = get_api_base_url() <> "/oauth"
+    req_url = base_url <> "/token"
+
+    req_params = %{
+      "grant_type" => "password",
+      "username" => get_api_client_username(),
+      "password" => get_api_client_password()
+    }
+
+    req_body = encode_query(req_params)
+
+    req_headers =
+      %{}
+      |> add_default_headers()
+      |> add_basic_auth_token()
+      |> Map.to_list()
+
+    do_perform_request(:post, req_url, req_headers, req_body)
   end
 
   @spec perform_request(url, method, body, headers, list) ::
@@ -79,28 +107,6 @@ defmodule AirVantage.API do
   defp add_oauth_token(headers) do
     {:ok, %{"access_token" => oauth_token, "token_type" => token_type}} = get_oauth_token()
     Map.put(headers, "Authorization", "#{token_type} #{oauth_token}")
-  end
-
-  @spec get_oauth_token() :: {:ok, map} | {:error, Error.t()}
-  defp get_oauth_token() do
-    base_url = get_api_base_url() <> "/oauth"
-    req_url = base_url <> "/token"
-
-    req_params = %{
-      "grant_type" => "password",
-      "username" => get_api_client_username(),
-      "password" => get_api_client_password()
-    }
-
-    req_body = encode_query(req_params)
-
-    req_headers =
-      %{}
-      |> add_default_headers()
-      |> add_basic_auth_token()
-      |> Map.to_list()
-
-    do_perform_request(:post, req_url, req_headers, req_body)
   end
 
   @spec do_perform_request(method, url, [headers], body, list | nil) ::

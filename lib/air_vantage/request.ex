@@ -79,6 +79,8 @@ defmodule AirVantage.Request do
         headers: headers,
         opts: opts
       }) do
-    API.request(params, method, endpoint, headers, opts)
+    api_client().request(params, method, endpoint, headers, opts)
   end
+
+  defp api_client(), do: Application.get_env(:ex_vantage, :api_client)
 end
