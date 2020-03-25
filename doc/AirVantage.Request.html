@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.21.2">
+    <meta name="project" content="ex_vantage v0.0.1">
+    <title>AirVantage.Request — ex_vantage v0.0.1</title>
+    <link rel="stylesheet" href="dist/html-de2388dc2f8074b0a4db.css" />
+    <script src="dist/sidebar_items-6494b25f20.js"></script>
+      <script src="docs_config.js"></script>
+    <script async src="dist/html-de2388dc2f8074b0a4db.js"></script>
+  </head>
+  <body data-type="modules">
+    <script>try { if(localStorage.getItem('night-mode') === 'true') document.body.className += ' night-mode'; } catch (e) { }</script>
+<div class="main">
+
+<button class="sidebar-button sidebar-toggle">
+  <span class="icon-menu" title="Collapse/expand sidebar"></span>
+</button>
+
+<section class="sidebar">
+  <form class="sidebar-search" action="search.html">
+    <button type="submit" class="search-button">
+      <span class="icon-search" aria-hidden="true"></span>
+    </button>
+    <button type="button" tabindex="-1" class="search-close-button">
+      <span class="icon-cross" title="Cancel search"></span>
+    </button>
+    <label class="search-label">
+      <input name="q" type="text" id="search-list" class="search-input" placeholder="Search..." aria-label="Search" autocomplete="off" />
+    </label>
+  </form>
+
+  <div class="autocomplete">
+    <div class="autocomplete-results">
+    </div>
+  </div>
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectDetails">
+      <a href="readme.html" class="sidebar-projectName">
+ex_vantage      </a>
+      <h2 class="sidebar-projectVersion">
+        v0.0.1
+      </h2>
+    </div>
+  </div>
+
+  <ul class="sidebar-listNav">
+    <li><a id="extras-list" href="#full-list">Pages</a></li>
+
+      <li><a id="modules-list" href="#full-list">Modules</a></li>
+
+
+  </ul>
+  <div class="gradient"></div>
+  <ul id="full-list" class="sidebar-fullList"></ul>
+</section>
+
+<section class="content">
+  <div class="content-outer">
+    <div id="content" class="content-inner">
+
+      <h1>
+        <small class="app-vsn">ex_vantage v0.0.1</small>
+AirVantage.Request          <a href="https://github.com/pvp-technologies/ex_vantage/blob/v0.0.1/lib/air_vantage/request.ex#L1" title="View Source" class="view-source" rel="help">
+            <span class="icon-code" aria-hidden="true"></span>
+            <span class="sr-only">View Source</span>
+          </a>
+      </h1>
+
+
+        <section id="moduledoc">
+<p>A module to build and execute requests to AirVantage API.
+The request does not happen until its passed to <a href="#make_request/1"><code class="inline">make_request/1</code></a>.
+At a minimum, a request must have the endpoint and method specified to be valid.</p>
+        </section>
+
+        <section id="summary" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#summary">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+            Summary
+          </h1>
+  <div class="summary-types summary">
+    <h2>
+      <a href="#types">Types</a>
+    </h2>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:t/0">t()</a>
+  </div>
+</div>
+  </div>
+  <div class="summary-functions summary">
+    <h2>
+      <a href="#functions">Functions</a>
+    </h2>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#make_request/1">make_request(request)</a>
+  </div>
+    <div class="summary-synopsis"><p>Executes the request and returns the response.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#new_request/1">new_request(headers \\ %{&quot;Content-Type&quot; =&gt; &quot;application/json&quot;})</a>
+  </div>
+    <div class="summary-synopsis"><p>Creates a new request.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#put_endpoint/2">put_endpoint(request, endpoint)</a>
+  </div>
+    <div class="summary-synopsis"><p>Specifies an endpoint for the request.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#put_method/2">put_method(request, method)</a>
+  </div>
+    <div class="summary-synopsis"><p>Specifies a method to use for the request.
+Accepts any of the standard HTTP methods as atoms, that is <code class="inline">:get</code>, <code class="inline">:post</code>,
+<code class="inline">:put</code> or <code class="inline">:delete</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#put_param/3">put_param(request, key, value)</a>
+  </div>
+    <div class="summary-synopsis"><p>Specify a single param to be included in the request.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#put_params/2">put_params(request, new_params)</a>
+  </div>
+    <div class="summary-synopsis"><p>Specifies the parameters to be used for the request.
+If the request is a <code class="inline">:post</code> request, these are encoded in the request body.
+Otherwise, they are encoded in the URL.
+Calling this function multiple times will merge, not replace, the params
+currently specified.</p></div>
+</div>
+  </div>
+        </section>
+
+        <section id="types" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#types">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+Types          </h1>
+          <div class="types-list">
+<section class="detail" id="t:t/0">
+  <div class="detail-header">
+    <a href="#t:t/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">t()</h1>
+      <a href="https://github.com/pvp-technologies/ex_vantage/blob/v0.0.1/lib/air_vantage/request.ex#L10" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+      <div class="specs">
+          <pre>t() :: %AirVantage.Request{
+  endpoint: <a href="AirVantage.API.html#t:endpoint/0">AirVantage.API.endpoint</a>() | nil,
+  headers: <a href="AirVantage.API.html#t:headers/0">AirVantage.API.headers</a>() | nil,
+  method: <a href="AirVantage.API.html#t:method/0">AirVantage.API.method</a>() | nil,
+  opts: <a href="https://hexdocs.pm/elixir/Keyword.html#t:t/0">Keyword.t</a>(),
+  params: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>()
+}</pre>
+      </div>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+          </div>
+        </section>
+        <section id="functions" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#functions">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+Functions          </h1>
+          <div class="functions-list">
+<section class="detail" id="make_request/1">
+  <div class="detail-header">
+    <a href="#make_request/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">make_request(request)</h1>
+      <a href="https://github.com/pvp-technologies/ex_vantage/blob/v0.0.1/lib/air_vantage/request.ex#L75" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+      <div class="specs">
+          <pre>make_request(<a href="#t:t/0">t</a>()) :: {:ok, <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>()} | {:error, AirVantage.Error.t()}</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Executes the request and returns the response.</p>
+  </section>
+</section>
+<section class="detail" id="new_request/1">
+    <span id="new_request/0"></span>
+  <div class="detail-header">
+    <a href="#new_request/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">new_request(headers \\ %{&quot;Content-Type&quot; =&gt; &quot;application/json&quot;})</h1>
+      <a href="https://github.com/pvp-technologies/ex_vantage/blob/v0.0.1/lib/air_vantage/request.ex#L28" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+      <div class="specs">
+          <pre>new_request(<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>() | nil) :: <a href="#t:t/0">t</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Creates a new request.</p>
+  </section>
+</section>
+<section class="detail" id="put_endpoint/2">
+  <div class="detail-header">
+    <a href="#put_endpoint/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">put_endpoint(request, endpoint)</h1>
+      <a href="https://github.com/pvp-technologies/ex_vantage/blob/v0.0.1/lib/air_vantage/request.ex#L36" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+      <div class="specs">
+          <pre>put_endpoint(<a href="#t:t/0">t</a>(), <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()) :: <a href="#t:t/0">t</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Specifies an endpoint for the request.</p>
+  </section>
+</section>
+<section class="detail" id="put_method/2">
+  <div class="detail-header">
+    <a href="#put_method/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">put_method(request, method)</h1>
+      <a href="https://github.com/pvp-technologies/ex_vantage/blob/v0.0.1/lib/air_vantage/request.ex#L46" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+      <div class="specs">
+          <pre>put_method(<a href="#t:t/0">t</a>(), <a href="AirVantage.API.html#t:method/0">AirVantage.API.method</a>()) :: <a href="#t:t/0">t</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Specifies a method to use for the request.
+Accepts any of the standard HTTP methods as atoms, that is <code class="inline">:get</code>, <code class="inline">:post</code>,
+<code class="inline">:put</code> or <code class="inline">:delete</code>.</p>
+  </section>
+</section>
+<section class="detail" id="put_param/3">
+  <div class="detail-header">
+    <a href="#put_param/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">put_param(request, key, value)</h1>
+      <a href="https://github.com/pvp-technologies/ex_vantage/blob/v0.0.1/lib/air_vantage/request.ex#L67" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+      <div class="specs">
+          <pre>put_param(<a href="#t:t/0">t</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>()) :: <a href="#t:t/0">t</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Specify a single param to be included in the request.</p>
+  </section>
+</section>
+<section class="detail" id="put_params/2">
+  <div class="detail-header">
+    <a href="#put_params/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">put_params(request, new_params)</h1>
+      <a href="https://github.com/pvp-technologies/ex_vantage/blob/v0.0.1/lib/air_vantage/request.ex#L59" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+      <div class="specs">
+          <pre>put_params(<a href="#t:t/0">t</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>()) :: <a href="#t:t/0">t</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Specifies the parameters to be used for the request.
+If the request is a <code class="inline">:post</code> request, these are encoded in the request body.
+Otherwise, they are encoded in the URL.
+Calling this function multiple times will merge, not replace, the params
+currently specified.</p>
+  </section>
+</section>
+          </div>
+        </section>
+      <footer class="footer">
+        <p>
+          <span class="line">
+            Built using
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.21.2),
+          </span>
+          <span class="line">
+            designed by
+            <a href="https://twitter.com/dignifiedquire" target="_blank" rel="noopener" title="@dignifiedquire">Friedel Ziegelmayer</a>.
+          </span>
+        </p>
+        <p>
+          <button class="line footer-button night-mode-toggle">
+            Toggle night mode
+          </button>
+          <button class="line footer-button tooltips-toggle">
+            <span class="tooltips-option-disable">Disable tooltips</span>
+            <span class="tooltips-option-enable">Enable tooltips</span>
+          </button>
+          <button class="line footer-button display-shortcuts-help">
+            Display keyboard shortcuts
+          </button>
+          <button class="line footer-button display-quick-switch">
+            Go to a HexDocs package
+          </button>
+        </p>
+      </footer>
+    </div>
+  </div>
+</section>
+</div>
+  </body>
+</html>
