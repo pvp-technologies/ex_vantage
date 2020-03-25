@@ -17,7 +17,8 @@ defmodule AirVantage.MixProject do
         "coveralls.post": :test,
         "coveralls.html": :test
       ],
-      docs: docs()
+      docs: docs(),
+      aliases: aliases()
     ]
   end
 
@@ -71,5 +72,9 @@ defmodule AirVantage.MixProject do
         AirVantage.Operations.SystemDeviceManagement
       ]
     ]
+  end
+
+  defp aliases do
+    [docs: ["docs --output docs"]]
   end
 end
